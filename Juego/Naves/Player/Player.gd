@@ -23,6 +23,8 @@ onready var colisionador:CollisionShape2D = $CollisionShape2D
 #Metodos
 func _ready() -> void:
 	pass
+func destruir()->void:
+	controlador_estados(ESTADO.MUERTO)
 func _unhandled_input(event: InputEvent) -> void:
 	if not esta_input_activo():
 		return
@@ -84,6 +86,7 @@ func controlador_estados(nuevo_estado:int)->void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disabled", true)
 			canion.set_puede_disparar(true)
+			Eventos.emit_signal("nave_destruida",global_position,1)
 			queue_free()
 		_:
 			printerr("Error de estado")
