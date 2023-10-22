@@ -22,3 +22,4 @@ position = Vector2( 806, 294 )
 
 [editable path="Player"]
 [editable path="Player/Canion"]
+[editable path="Player/Escudo"]
