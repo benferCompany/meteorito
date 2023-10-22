@@ -7,6 +7,10 @@ var danio:float
 
 
 #Metodos
+func daniar(otro_cuerpo:CollisionObject2D)-> void:
+	if otro_cuerpo.has_method("recibir_danio"):
+		otro_cuerpo.recibir_danio(danio)
+		
 func crear(pos:Vector2, dir:float, vel:float, danio_p:int)->void:
 	position = pos
 	rotation = dir
@@ -18,7 +22,19 @@ func _physics_process(delta: float) -> void:
 	
 
 
-
+##Señales internas
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
-	pass # Replace with function body.
+
+
+func _on_Proyectil_area_entered(area: Area2D) -> void:
+	if area.has_method("recibir_danio"):
+		area.recibir_danio(danio)
+		
+	queue_free()
+
+
+func _on_Proyectil_body_entered(body: Node) -> void:
+	if body.has_method("recibir_danio"):
+		body.recibir_danio(danio)
+	queue_free()
