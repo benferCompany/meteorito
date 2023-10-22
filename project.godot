@@ -70,6 +70,11 @@ config/icon="res://Juego/Naves/Player/player_orange64x64.png"
 
 Eventos="*res://Juego/Autoloads/Eventos.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=1920
@@ -80,6 +85,10 @@ window/size/test_width=1280
 window/size/test_height=780
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[global]
+
+return=false
 
 [gui]
 
